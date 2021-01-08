@@ -183,8 +183,10 @@ class ReadSerialThread  implements Runnable  {
 	    		//send update to web 	
 	    	
 	    	}else if(_val > AppConstants.TANK_ALERT_VALUE ) {
+	    		int lineFeedInt=Integer.parseInt(lineFeed);  
+	    		int percentLeft = 100 - ((lineFeedInt/AppConstants.TANK_EMPTY_VALUE) * 100);
 	    		SendHttp.sendPost("TANK needs Refilling  !...");
-	    		System.out.println("Tank needs Refillling ..Value recieved :"+lineFeed);
+	    		System.out.println("Tank needs Refillling ..Percentage Left :"+ percentLeft);
 	    		//send update to web 
 	    		
 	    	}else {
